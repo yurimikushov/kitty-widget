@@ -5,8 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitty widget</title>
+    <style>
+      #container {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
   </head>
   <body>
-    <script src="./src/index.ts"></script>
+    <div id="container"></div>
+    <script>
+      import('./src/index.ts').then(() => {
+        const container = document.getElementById('container')
+
+        const widget = new window.KittyWidget(container)
+
+        const updateBtn = document.createElement('button')
+        updateBtn.textContent = 'Update'
+        updateBtn.addEventListener('click', () => {
+          widget.updateKitty()
+        })
+
+        container.appendChild(updateBtn)
+      })
+    </script>
   </body>
 </html>

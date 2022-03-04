@@ -1,5 +1,4 @@
-const greet = (name: string) => {
-  console.log(`Hello, ${name}`)
-}
+import KittyWidget from './KittyWidget'
 
-greet('John Doe')
+// @ts-expect-error bad typing
+window.KittyWidget = KittyWidget
