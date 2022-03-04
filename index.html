@@ -30,10 +30,10 @@
     </div>
     <script type="module" src="./src/KittyWidgetElement.ts"></script>
     <script>
-      import('./src/index.ts').then(() => {
+      import('./src/kitty-widget/main.ts').then(async () => {
         const container = document.getElementById('widget-container')
 
-        const widget = new window.KittyWidget(container)
+        const widget = await window.KittyWidgetFactory.create(container)
 
         const updateBtn = document.createElement('button')
         updateBtn.textContent = 'Update'

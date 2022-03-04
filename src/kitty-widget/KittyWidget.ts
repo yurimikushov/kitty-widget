@@ -1,4 +1,4 @@
-import { getNextKitty } from './api'
+import { getNextKitty } from '../api'
 
 class KittyWidget {
   private _imgElement: HTMLImageElement | null = null
