@@ -37,8 +37,16 @@
 
         const updateBtn = document.createElement('button')
         updateBtn.textContent = 'Update'
-        updateBtn.addEventListener('click', () => {
-          widget.updateKitty()
+        updateBtn.addEventListener('click', async () => {
+          const updateBtnTitle = updateBtn.textContent
+
+          updateBtn.disabled = true
+          updateBtn.textContent = 'Loading...'
+
+          await widget.updateKitty()
+
+          updateBtn.disabled = false
+          updateBtn.textContent = updateBtnTitle
         })
 
         container.appendChild(updateBtn)

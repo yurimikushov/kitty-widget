@@ -9,7 +9,10 @@ class KittyWidget {
   }
 
   async updateKitty() {
-    await this._setNextImgSrc()
+    await new Promise(async resolve => {
+      this._imgElement.addEventListener('load', () => resolve(undefined))
+      await this._setNextImgSrc()
+    })
   }
 
   destroy() {
