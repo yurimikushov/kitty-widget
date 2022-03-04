@@ -34,7 +34,7 @@ img + button {
 }
 `
 
-class KittyWidgetElement extends HTMLElement {
+class RandomKittyElement extends HTMLElement {
   constructor() {
     super()
 
@@ -73,4 +73,4 @@ class KittyWidgetElement extends HTMLElement {
   }
 }
 
-export default KittyWidgetElement
+export default RandomKittyElement
