@@ -16,6 +16,21 @@
         width: 500px;
         height: 400px;
       }
+
+      .widget__update-btn {
+        display: block;
+        margin: 0 auto;
+        height: 30px;
+        cursor: pointer;
+      }
+
+      .widget__update-btn:disabled {
+        cursor: not-allowed;
+      }
+
+      .widget__update-btn_mt-20 {
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -39,7 +54,11 @@
         const widget = await window.KittyWidgetFactory.create(container)
 
         const updateBtn = document.createElement('button')
-        updateBtn.textContent = 'Update'
+        updateBtn.classList.add(
+          'widget__update-btn',
+          'widget__update-btn_mt-20'
+        )
+        updateBtn.textContent = 'Show next kitty'
         updateBtn.addEventListener('click', async () => {
           const updateBtnTitle = updateBtn.textContent
 
