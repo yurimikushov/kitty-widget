@@ -2,12 +2,12 @@
   "name": "kitty-widget",
   "version": "0.1.0",
   "scripts": {
-    "dev": "parcel samples.html",
+    "dev": "parcel samples.html --no-cache",
     "build": "npm run build:kitty-widget && npm run build:kitty-element",
     "build:kitty-widget": "npm run build:init-kitty-widget && npm run build:kitty-widget-factory",
-    "build:init-kitty-widget": "parcel build src/kitty-widget/init-kitty-widget.ts",
-    "build:kitty-widget-factory": "parcel build src/kitty-widget/kitty-widget-factory.ts",
-    "build:kitty-element": "parcel build ./src/kitty-element/define-kitty-element.ts"
+    "build:init-kitty-widget": "parcel build src/kitty-widget/init-kitty-widget.ts --no-cache",
+    "build:kitty-widget-factory": "parcel build src/kitty-widget/kitty-widget-factory.ts --no-cache",
+    "build:kitty-element": "parcel build ./src/kitty-element/define-kitty-element.ts --no-cache"
   },
   "devDependencies": {
     "parcel": "^2.3.2"
