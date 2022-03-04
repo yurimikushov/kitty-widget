@@ -1,4 +1,4 @@
-import { getNextKitty } from './api'
+import { getNextKitty } from '../api'
 
 const styles = `
 * {
@@ -73,4 +73,4 @@ class KittyWidgetElement extends HTMLElement {
   }
 }
 
-window.customElements.define('kitty-widget', KittyWidgetElement)
+export default KittyWidgetElement

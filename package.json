@@ -6,7 +6,7 @@
     "build:init-kitty-widget": "parcel build src/kitty-widget/init-kitty-widget.ts",
     "build:kitty-widget-factory": "parcel build src/kitty-widget/main.ts",
     "build:kitty-widget": "npm run build:init-kitty-widget && npm run build:kitty-widget-factory",
-    "build:kitty-element": "parcel build ./src/KittyWidgetElement.ts"
+    "build:kitty-element": "parcel build ./src/kitty-element/index.ts"
   },
   "devDependencies": {
     "parcel": "^2.3.2"
