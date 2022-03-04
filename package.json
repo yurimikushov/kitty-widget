@@ -1,0 +1,11 @@
+{
+  "name": "kitty-widget",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.3.2"
+  }
+}
