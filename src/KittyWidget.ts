@@ -18,21 +18,31 @@ class KittyWidget {
   }
 
   private async _create() {
+    const div = document.createElement('div')
+    const shadowRoot = div.attachShadow({ mode: 'closed' })
+
     this._imgElement = document.createElement('img')
-    this._imgElement.classList.add('kitty-widget')
 
     const style = document.createElement('style')
     style.textContent = `
-      .kitty-widget {
+      :host {
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
         display: block;
         width: 100%;
         height: 100%;
+        object-fit: cover;
         border: 4px dashed green;
       }
     `
 
-    this._container.appendChild(this._imgElement)
-    document.head.appendChild(style)
+    shadowRoot.appendChild(style)
+    shadowRoot.appendChild(this._imgElement)
+
+    this._container.appendChild(div)
   }
 
   private async _setNextImgSrc() {
