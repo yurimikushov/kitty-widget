@@ -2,7 +2,7 @@
   "name": "kitty-widget",
   "version": "0.1.0",
   "scripts": {
-    "dev": "parcel index.html",
+    "dev": "parcel samples.html",
     "build:init-kitty-widget": "parcel build src/kitty-widget/init-kitty-widget.ts",
     "build:kitty-widget-factory": "parcel build src/kitty-widget/kitty-widget-factory.ts",
     "build:kitty-widget": "npm run build:init-kitty-widget && npm run build:kitty-widget-factory",
