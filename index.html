@@ -28,9 +28,12 @@
       </div>
       <div id="widget-container" class="widget"></div>
     </div>
-    <script type="module" src="./src/kitty-element/index.ts"></script>
+    <script
+      type="module"
+      src="./src/kitty-element/define-kitty-element.ts"
+    ></script>
     <script>
-      import('./src/kitty-widget/main.ts').then(async () => {
+      import('./src/kitty-widget/kitty-widget-factory.ts').then(async () => {
         const container = document.getElementById('widget-container')
 
         const widget = await window.KittyWidgetFactory.create(container)
