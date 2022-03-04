@@ -2,7 +2,7 @@
   "name": "kitty-widget",
   "version": "0.1.0",
   "scripts": {
-    "dev": "parcel samples.html --no-cache",
+    "dev": "npm run build:init-kitty-widget && parcel samples.html --no-cache",
     "build": "npm run build:kitty-widget && npm run build:kitty-element",
     "build:kitty-widget": "npm run build:init-kitty-widget && npm run build:kitty-widget-factory",
     "build:init-kitty-widget": "parcel build src/kitty-widget/init-kitty-widget.ts --no-cache",
