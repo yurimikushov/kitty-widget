@@ -6,15 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Samples</title>
     <style>
+      body {
+        min-height: 100vh;
+        background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .custom-components,
       .widgets {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 20px;
       }
 
+      .custom-component,
       .widget {
         width: 500px;
         height: 400px;
+      }
+
+      .widget__img {
+        width: 100%;
+        height: calc(100% - 30px - 10px);
       }
 
       .widget__update-btn {
@@ -34,45 +53,63 @@
     </style>
   </head>
   <body>
-    <div class="widgets">
-      <div class="widget">
-        <random-kitty></random-kitty>
+    <main>
+      <h1 class="title">Widget based on friendly iframe and shadow DOM</h1>
+      <div id="widgets-container" class="widgets"></div>
+      <h1 class="title">Custom web-components</h1>
+      <div class="custom-components">
+        <random-kitty class="custom-component"></random-kitty>
+        <random-kitty class="custom-component"></random-kitty>
+        <random-kitty class="custom-component"></random-kitty>
+        <random-kitty class="custom-component"></random-kitty>
       </div>
-      <div class="widget">
-        <random-kitty></random-kitty>
-      </div>
-      <div id="widget-container" class="widget"></div>
-    </div>
+    </main>
     <script
       type="module"
       src="./src/kitty-element/define-kitty-element.ts"
     ></script>
     <script>
-      import('./src/kitty-widget/kitty-widget-factory.ts').then(async () => {
-        const container = document.getElementById('widget-container')
+      const addKittyWidget = container => {
+        import('./src/kitty-widget/kitty-widget-factory.ts').then(async () => {
+          const widgetElement = document.createElement('div')
+          widgetElement.classList.add('widget')
 
-        const widget = await window.KittyWidgetFactory.create(container)
+          const widgetImgElement = document.createElement('div')
+          widgetImgElement.classList.add('widget__img')
 
-        const updateBtn = document.createElement('button')
-        updateBtn.classList.add(
-          'widget__update-btn',
-          'widget__update-btn_mt-20'
-        )
-        updateBtn.textContent = 'Show next kitty'
-        updateBtn.addEventListener('click', async () => {
-          const updateBtnTitle = updateBtn.textContent
+          const widget = await window.KittyWidgetFactory.create(
+            widgetImgElement
+          )
 
-          updateBtn.disabled = true
-          updateBtn.textContent = 'Loading...'
+          const updateBtnElement = document.createElement('button')
+          updateBtnElement.classList.add(
+            'widget__update-btn',
+            'widget__update-btn_mt-20'
+          )
+          updateBtnElement.textContent = 'Show next kitty'
+          updateBtnElement.addEventListener('click', async () => {
+            const updateBtnElementTitle = updateBtnElement.textContent
 
-          await widget.updateKitty()
+            updateBtnElement.disabled = true
+            updateBtnElement.textContent = 'Loading...'
 
-          updateBtn.disabled = false
-          updateBtn.textContent = updateBtnTitle
+            await widget.updateKitty()
+
+            updateBtnElement.disabled = false
+            updateBtnElement.textContent = updateBtnElementTitle
+          })
+
+          widgetElement.appendChild(widgetImgElement)
+          widgetElement.appendChild(updateBtnElement)
+
+          container.appendChild(widgetElement)
         })
+      }
 
-        container.appendChild(updateBtn)
-      })
+      addKittyWidget(document.getElementById('widgets-container'))
+      addKittyWidget(document.getElementById('widgets-container'))
+      addKittyWidget(document.getElementById('widgets-container'))
+      addKittyWidget(document.getElementById('widgets-container'))
     </script>
   </body>
 </html>
