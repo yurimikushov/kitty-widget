@@ -6,17 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitty widget</title>
     <style>
-      #container {
+      .widgets {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .widget {
         width: 500px;
         height: 400px;
       }
     </style>
   </head>
   <body>
-    <div id="container"></div>
+    <div class="widgets">
+      <div class="widget">
+        <kitty-widget></kitty-widget>
+      </div>
+      <div class="widget">
+        <kitty-widget></kitty-widget>
+      </div>
+      <div id="widget-container" class="widget"></div>
+    </div>
+    <script type="module" src="./src/KittyWidgetElement.ts"></script>
     <script>
       import('./src/index.ts').then(() => {
-        const container = document.getElementById('container')
+        const container = document.getElementById('widget-container')
 
         const widget = new window.KittyWidget(container)
 

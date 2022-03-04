@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "build:widget-element": "parcel build ./src/KittyWidgetElement.ts"
   },
   "devDependencies": {
     "parcel": "^2.3.2"
