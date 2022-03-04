@@ -1,0 +1,1 @@
+export { getNextKitty } from './api'
